@@ -82,7 +82,7 @@ function header() {
                         <div class="product">
                             <div class="product-cart-details">
                                 <h4 class="product-title">
-                                    <a href="product.html">Beige knitted elastic runner shoes</a>
+                                    <a href="categories.html">Beige knitted elastic runner shoes</a>
                                 </h4>
 
                                 <span class="cart-product-info">
@@ -145,7 +145,7 @@ function header() {
                         <a href="index.html" >Inicio</a>
                     </li>
                     <li>
-                        <a href="product.html" class="sf-with-ul">Categorias</a>
+                        <a href="categories.html" class="sf-with-ul">Categorias</a>
 
                         <div class="megamenu megamenu-sm">
                             <div class="row no-gutters">
@@ -180,7 +180,7 @@ function header() {
                         </div><!-- End .megamenu megamenu-sm -->
                     </li>
                     <li>
-                        <a href="product.html" class="sf-with-ul">Marcas</a>
+                        <a class="sf-with-ul">Marcas</a>
 
                         <div class="megamenu megamenu-sm">
                             <div class="row no-gutters">

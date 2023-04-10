@@ -4,15 +4,15 @@ function footer() {
         <div class="row justify-content-center">
             <div class="col-sm-10 col-md-8 col-lg-6">
                 <div class="cta-heading text-center">
-                    <h3 class="cta-title text-white">Get The Latest Deals</h3><!-- End .cta-title -->
-                    <p class="cta-desc text-white">and receive <span class="font-weight-normal">$20 coupon</span> for first shopping</p><!-- End .cta-desc -->
+                    <h3 class="cta-title text-white">Obtén Lo Último En Ofertas</h3><!-- End .cta-title -->
+                    <p class="cta-desc text-white">y recibe un <span class="font-weight-normal">cupón del 20%</span> en la primera compra</p><!-- End .cta-desc -->
                 </div><!-- End .text-center -->
             
                 <form action="#">
                     <div class="input-group input-group-round">
-                        <input type="email" class="form-control form-control-white" placeholder="Enter your Email Address" aria-label="Email Adress" required>
+                        <input type="email" class="form-control form-control-white" placeholder="Ingresa tu correo" aria-label="Email Adress" required>
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit"><span>Subscribe</span><i class="icon-long-arrow-right"></i></button>
+                            <button class="btn btn-primary" type="submit"><span>Suscribirse</span><i class="icon-long-arrow-right"></i></button>
                         </div><!-- .End .input-group-append -->
                     </div><!-- .End .input-group -->
                 </form>
