@@ -10,7 +10,8 @@ function categories() {
             "id": 2,    
             "name": "Camaras Digitales",
             "horizontal": "https://images.pexels.com/photos/4491446/pexels-photo-4491446.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "vertical": "https://images.pexels.com/photos/4793169/pexels-photo-4793169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            "vertical": "https://images.pexels.com/photos/4793169/pexels-photo-4793169.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "extra": 'hot'
         },
         {
             "id": 3,
@@ -22,7 +23,8 @@ function categories() {
             "id": 4,
             "name": "Smart Watches",
             "horizontal": "https://images.pexels.com/photos/7376108/pexels-photo-7376108.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            "vertical": "https://images.pexels.com/photos/5054541/pexels-photo-5054541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            "vertical": "https://images.pexels.com/photos/5054541/pexels-photo-5054541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "extra": 'new'
         },
         {
             "id": 4,

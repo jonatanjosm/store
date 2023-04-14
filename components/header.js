@@ -1,4 +1,41 @@
+
 function header() {
+
+    var categoriesList = categories().map((category) => {
+        var html;
+        switch (category.extra) {
+            case 'hot':
+                html = `<li><a href="category.html?category=${category.id}"><span>${category.name}<span class="tip tip-hot">Hot</span></span></a></li>`
+                break;
+            case 'new':
+                html = `<li><a href="category.html?category=${category.id}"><span>${category.name}<span class="tip tip-new">New</span></span></a></li>`
+                break;
+        
+            default:
+                html = `<li><a href="category.html?category=${category.id}">${category.name}</a></li>`
+                break;
+        }
+        return html
+    })
+    categoriesHtml = categoriesList.join('');
+
+    var brandsList = brands().map((brand) => {
+        var html;
+        switch (brand.extra) {
+            case 'hot':
+                html = `<li><a href="category.html?brand=${brand.name}"><span>${brand.name}<span class="tip tip-hot">Hot</span></span></a></li>`
+                break;
+            case 'new':
+                html = `<li><a href="category.html?brand=${brand.name}"><span>${brand.name}<span class="tip tip-new">New</span></span></a></li>`
+                break;
+        
+            default:
+                html = `<li><a href="category.html?brand=${brand.name}">${brand.name}</a></li>`
+                break;
+        }
+        return html
+    })
+    brandsHtml = brandsList.join('');
     return `<div class="header-top">
     <div class="container">
         <div class="header-left">
@@ -57,16 +94,6 @@ function header() {
 
         <div class="header-right">
             
-
-            <div class="wishlist">
-                <a href="wishlist.html" title="Wishlist">
-                    <div class="icon">
-                        <i class="icon-heart-o"></i>
-                        <span class="wishlist-count badge">3</span>
-                    </div>
-                    <p>Favoritos</p>
-                </a>
-            </div><!-- End .compare-dropdown -->
 
             <div class="dropdown cart-dropdown">
                 <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
@@ -151,16 +178,9 @@ function header() {
                             <div class="row no-gutters">
                                 <div class="col-md-6">
                                     <div class="menu-col">
-                                        <div class="menu-title">Product Details</div><!-- End .menu-title -->
+                                        <div class="menu-title">Nuestras categorias</div><!-- End .menu-title -->
                                         <ul>
-                                            <li><a href="product.html">Default</a></li>
-                                            <li><a href="product-centered.html">Centered</a></li>
-                                            <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
-                                            <li><a href="product-gallery.html">Gallery</a></li>
-                                            <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span class="tip tip-hot">Hot</span></span></a></li>
-                                            <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
-                                            <li><a href="product-fullwidth.html">Full Width</a></li>
-                                            <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
+                                            ${categoriesHtml}
                                         </ul>
                                     </div><!-- End .menu-col -->
                                 </div><!-- End .col-md-6 -->
@@ -186,16 +206,9 @@ function header() {
                             <div class="row no-gutters">
                                 <div class="col-md-6">
                                     <div class="menu-col">
-                                        <div class="menu-title">Product Details</div><!-- End .menu-title -->
+                                        <div class="menu-title">Marcas aliadas</div><!-- End .menu-title -->
                                         <ul>
-                                            <li><a href="product.html">Default</a></li>
-                                            <li><a href="product-centered.html">Centered</a></li>
-                                            <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
-                                            <li><a href="product-gallery.html">Gallery</a></li>
-                                            <li><a href="product-sticky.html">Sticky Info</a></li>
-                                            <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
-                                            <li><a href="product-fullwidth.html">Full Width</a></li>
-                                            <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
+                                            ${brandsHtml}
                                         </ul>
                                     </div><!-- End .menu-col -->
                                 </div><!-- End .col-md-6 -->
