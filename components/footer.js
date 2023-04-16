@@ -66,8 +66,7 @@ function footer() {
                     <h4 class="widget-title">Mi cuenta</h4><!-- End .widget-title -->
 
                     <ul class="widget-list">
-                        <li><a href="cart.html">View Cart</a></li>
-                        <li><a href="wishlist.html">Favoritos</a></li>
+                        <li><a href="cart.html">Ver Carrito</a></li>
                     </ul><!-- End .widget-list -->
                 </div><!-- End .widget -->
             </div><!-- End .col-sm-6 col-lg-3 -->

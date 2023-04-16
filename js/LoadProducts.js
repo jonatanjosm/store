@@ -71,6 +71,16 @@ function removeCart(productReference){
     localStorage.setItem('cart', JSON.stringify(cartProducts))
     loadCartProducts()
 }
+function removeCartView(productReference){
+    var cartProducts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+    console.log(cartProducts);
+    cartProducts = cartProducts.filter((product) => product.reference != productReference)
+    
+    localStorage.setItem('cart', JSON.stringify(cartProducts))
+    loadCartProducts()
+    loadViewCartProducts()
+    quantityInputs()
+}
 
 function loadCartProducts(){
     const currency = localStorage.getItem('currency') ?? 'CLP';
@@ -79,6 +89,7 @@ function loadCartProducts(){
         //dropdown-cart-products
         cartProducts = JSON.parse(cartProducts);
         var total = 0;
+        var quantity = 0;
         var html = ``;
 
         const productsObj = {};
@@ -122,13 +133,100 @@ function loadCartProducts(){
                         <a class="btn-remove" onClick="removeCart('${product.reference}')" title="Remove Product"><i class="icon-close"></i></a>
                     </div><!-- End .product -->`
             total += product[currency] ? product[currency] * product.quantity : 0;
+            quantity += parseInt(product.quantity);
         })
         $('.dropdown-cart-products').html(html)
-        $('.cart-count').html(cartProducts.length)
+        $('.cart-count').html(`${quantity}`)
         $('.cart-total-price').html(`${currency} ${formatNumber(total ?? 0)}`)
 
+        if(quantity == 0){
+            $('#checkout_btn').hide()
+        }else{
+            $('#checkout_btn').show()
+        }
         
     }
+}
+
+function loadViewCartProducts(){
+    const currency = localStorage.getItem('currency') ?? 'CLP';
+    var cartProducts = localStorage.getItem('cart')
+    if(cartProducts !== null){
+        //dropdown-cart-products
+        cartProducts = JSON.parse(cartProducts);
+        var total = 0;
+        var html = ``;
+
+        const productsObj = {};
+            products().forEach(item => {
+            productsObj[item.reference] = item;
+            });
+
+        const result = [];
+        cartProducts.forEach(item => {
+        let product = productsObj[item.reference];
+        if (product) {
+            var obj = {
+                reference: item.reference,
+                name: product.name,
+                quantity: item.quantity
+            };
+            obj[currency] = product[currency]
+
+            result.push(obj);
+        }
+        });
+
+        result.forEach((product)=> {
+            html += `<tr>
+                        <td class="product-col">
+                            <div class="product">
+                                <figure class="product-media">
+                                    <a href="product.html?reference=${product.reference}">
+                                        <img class="product-img-cart" src="assets/images/product/${product.reference}_1.jpg" alt="product">
+                                    </a>
+                                </figure>
+
+                                <h3 class="product-title">
+                                    <a href="product.html?reference=${product.reference}">${product.name}</a>
+                                </h3><!-- End .product-title -->
+                            </div><!-- End .product -->
+                        </td>
+                        <td class="price-col">${currency} ${formatNumber(product[currency] ?? 0)}</td>
+                        <td class="quantity-col">
+                            <div class="cart-product-quantity">
+                                <input type="number" id="quantity_${product.reference}" onChange="updateCart('${product.reference}', ${product[currency]})" class="form-control" value="${product.quantity}" min="1" max="10" step="1" data-decimals="0">
+                            </div><!-- End .cart-product-quantity -->
+                        </td>
+                        <td class="total-col" id="total_${product.reference}">${currency} ${formatNumber(product[currency] ? product[currency] * product.quantity : 0)}</td>
+                        <td class="remove-col"><button onClick="removeCartView('${product.reference}')" class="btn-remove"><i class="icon-close"></i></button></td>
+                    </tr>`
+            total += product[currency] ? product[currency] * product.quantity : 0;
+        })
+        $('#cart-tbody').html(html)
+        $('.total').html(`${currency} ${formatNumber(total ?? 0)}`)
+
+    }
+}
+
+function updateCart(reference, price) {
+    var quantity = $(`#quantity_${reference}`).val()
+    var cartProducts = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+    const currency = localStorage.getItem('currency') ?? 'CLP';
+    
+    console.log(cartProducts);
+    var total = 0;
+    cartProducts = cartProducts.map((product) => {
+        if(product.reference == reference){
+            product.quantity = quantity;
+            total = price * quantity;
+        } 
+        return product
+    })
+
+    localStorage.setItem('cart', JSON.stringify(cartProducts))
+    $(`#total_${reference}`).html(`${currency} ${formatNumber(total ?? 0)}`)
+    loadCartProducts()
 }
 
 function seleccionarObjetosAleatorios(array) {

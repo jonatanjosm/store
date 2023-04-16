@@ -38,7 +38,7 @@ function brands() {
         },
         {
           "name": "Sonos",
-          "icon": "https://brandeps.com/logo/S/Sonos-01"
+          "icon": "Sonos-01"
         }
       ]
       
