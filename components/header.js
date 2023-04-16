@@ -1,5 +1,26 @@
 
+const currencys = ['CLP', 'COP', 'PEN', 'MXN', 'USD'];
+
+function selectCurrency(currency){
+    localStorage.setItem('currency', currency);
+    location.reload();
+}
+
 function header() {
+
+    //Localstorage
+    var currency = localStorage.getItem('currency');
+    if(currency === null){
+        localStorage.setItem('currency', 'CLP');
+        currency = 'CLP';
+    }
+
+    var currencysList = currencys.map((curr)=>`<li><a href="#" onClick="selectCurrency('${curr}')"><img src="assets/images/flags/${curr}.png" width="15">&nbsp ${curr} &nbsp</a></li>`)
+    var currencysHtml = currencysList.join('');
+
+    var currencySelected = `<a href="#"><img src="assets/images/flags/${currency}.png" width="15">&nbsp ${currency}</a>`;
+
+    //----------------------------------------------------------//
 
     var categoriesList = categories().map((category) => {
         var html;
@@ -50,14 +71,10 @@ function header() {
                     <ul>
                         <li>
                             <div class="header-dropdown">
-                                <a href="#"><img src="assets/images/flags/USD.png" width="15">&nbsp USD</a>
+                                ${currencySelected}
                                 <div class="header-menu">
                                     <ul>
-                                        <li><a href="#"><img src="assets/images/flags/CLP.png" width="15">&nbsp CLP &nbsp</a></li>
-                                        <li><a href="#"><img src="assets/images/flags/COP.png" width="15">&nbsp COP &nbsp</a></li>
-                                        <li><a href="#"><img src="assets/images/flags/PEN.png" width="15">&nbsp PEN &nbsp</a></li>
-                                        <li><a href="#"><img src="assets/images/flags/MXN.png" width="15">&nbsp MXN &nbsp</a></li>
-                                        <li><a href="#"><img src="assets/images/flags/USD.png" width="15">&nbsp USD &nbsp</a></li>
+                                        ${currencysHtml}
                                     </ul>
                                 </div><!-- End .header-menu -->
                             </div>
@@ -99,58 +116,19 @@ function header() {
                 <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
                     <div class="icon">
                         <i class="icon-shopping-cart"></i>
-                        <span class="cart-count">2</span>
+                        <span class="cart-count">0</span>
                     </div>
                     <p>Carrito</p>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-cart-products">
-                        <div class="product">
-                            <div class="product-cart-details">
-                                <h4 class="product-title">
-                                    <a href="categories.html">Beige knitted elastic runner shoes</a>
-                                </h4>
-
-                                <span class="cart-product-info">
-                                    <span class="cart-product-qty">1</span>
-                                    x $84.00
-                                </span>
-                            </div><!-- End .product-cart-details -->
-
-                            <figure class="product-image-container">
-                                <a href="product.html" class="product-image">
-                                    <img src="assets/images/products/cart/product-1.jpg" alt="product">
-                                </a>
-                            </figure>
-                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <div class="product-cart-details">
-                                <h4 class="product-title">
-                                    <a href="product.html">Blue utility pinafore denim dress</a>
-                                </h4>
-
-                                <span class="cart-product-info">
-                                    <span class="cart-product-qty">1</span>
-                                    x $76.00
-                                </span>
-                            </div><!-- End .product-cart-details -->
-
-                            <figure class="product-image-container">
-                                <a href="product.html" class="product-image">
-                                    <img src="assets/images/products/cart/product-2.jpg" alt="product">
-                                </a>
-                            </figure>
-                            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                        </div><!-- End .product -->
+                    <div class="dropdown-cart-products drpdown-cart-products-max">
                     </div><!-- End .cart-product -->
 
                     <div class="dropdown-cart-total">
                         <span>Total</span>
 
-                        <span class="cart-total-price">$160.00</span>
+                        <span class="cart-total-price">-</span>
                     </div><!-- End .dropdown-cart-total -->
 
                     <div class="dropdown-cart-action">
@@ -180,7 +158,7 @@ function header() {
                                     <div class="menu-col">
                                         <div class="menu-title">Nuestras categorias</div><!-- End .menu-title -->
                                         <ul>
-                                            ${categoriesHtml}
+                                            ${categoriesHtml} 
                                         </ul>
                                     </div><!-- End .menu-col -->
                                 </div><!-- End .col-md-6 -->
