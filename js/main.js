@@ -1,15 +1,60 @@
 
+
+
+function owlCarousels($wrap, options) {
+    if ( $.fn.owlCarousel ) {
+        var owlSettings = {
+            items: 1,
+            loop: true,
+            margin: 0,
+            responsiveClass: true,
+            nav: true,
+            navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
+            dots: true,
+            smartSpeed: 400,
+            autoplay: false,
+            autoplayTimeout: 15000
+        };
+        if (typeof $wrap == 'undefined') {
+            $wrap = $('body');
+        }
+        if (options) {
+            owlSettings = $.extend({}, owlSettings, options);
+        }
+
+        // Init all carousel
+        $wrap.find('[data-toggle="owl"]').each(function () {
+            var $this = $(this),
+                newOwlSettings = $.extend({}, owlSettings, $this.data('owl-options'));
+
+            $this.owlCarousel(newOwlSettings);
+            
+        });   
+    }
+}
+
+function quantityInputs() {
+    if ( $.fn.inputSpinner ) {
+        $("input[type='number']").inputSpinner({
+            decrementButton: '<i class="icon-minus"></i>',
+            incrementButton: '<i class="icon-plus"></i>',
+            groupClass: 'input-spinner',
+            buttonsClass: 'btn-spinner',
+            buttonsWidth: '26px'
+        });
+    }
+}
+
 // Main Js File
 $(document).ready(function () {
     'use strict';    
 
+    
     //Load components
     $('header').html(header())
     $('footer').html(footer())
-    $('#brands-carousel').html(loadBrandsIcons())
     loadCartProducts()
     
-    owlCarousels();
     quantityInputs();
 
     // Header Search Toggle
@@ -240,17 +285,7 @@ $(document).ready(function () {
 	}
 
 	// Quantity Input - Cart page - Product Details pages
-    function quantityInputs() {
-        if ( $.fn.inputSpinner ) {
-            $("input[type='number']").inputSpinner({
-                decrementButton: '<i class="icon-minus"></i>',
-                incrementButton: '<i class="icon-plus"></i>',
-                groupClass: 'input-spinner',
-                buttonsClass: 'btn-spinner',
-                buttonsWidth: '26px'
-            });
-        }
-    }
+    
 
     // Sticky Content - Sidebar - Social Icons etc..
     // Wrap elements with <div class="sticky-content"></div> if you want to make it sticky
@@ -261,37 +296,7 @@ $(document).ready(function () {
 		});
     }
 
-    function owlCarousels($wrap, options) {
-        if ( $.fn.owlCarousel ) {
-            var owlSettings = {
-                items: 1,
-                loop: true,
-                margin: 0,
-                responsiveClass: true,
-                nav: true,
-                navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
-                dots: true,
-                smartSpeed: 400,
-                autoplay: false,
-                autoplayTimeout: 15000
-            };
-            if (typeof $wrap == 'undefined') {
-                $wrap = $('body');
-            }
-            if (options) {
-                owlSettings = $.extend({}, owlSettings, options);
-            }
-
-            // Init all carousel
-            $wrap.find('[data-toggle="owl"]').each(function () {
-                var $this = $(this),
-                    newOwlSettings = $.extend({}, owlSettings, $this.data('owl-options'));
-
-                $this.owlCarousel(newOwlSettings);
-                
-            });   
-        }
-    }
+    
 
     // Product Image Zoom plugin - product pages
     if ( $.fn.elevateZoom ) {

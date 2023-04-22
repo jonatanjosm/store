@@ -1,3 +1,5 @@
+
+
 function loadRandomProducts(category, id) {
     const currency = localStorage.getItem('currency');
     const productsShow = category === 'all'
@@ -8,7 +10,7 @@ function loadRandomProducts(category, id) {
     productsShow.forEach((product)=>{
         let colors = ``;
         product.colors.forEach((color)=> colors += `<a href="#color_${product.reference}_${color}" id="color_${product.reference}_${color}" style="background: #${color};"><span class="sr-only">Color name</span></a>`)
-        html += `<div class="product product-2">
+        html += `<div class="product product-2 product-small">
                     <figure class="product-media">
                         <a href="product.html?reference=${product.reference}">
                             <img src="assets/images/product/${product.reference}_1.jpg" class="product-img-small" alt="Product image" class="product-image">
@@ -58,8 +60,13 @@ function addCart(productReference){
     if(!added){
         cartProducts.push({reference: productReference, quantity: 1})
     }
-    
     localStorage.setItem('cart', JSON.stringify(cartProducts))
+    Swal.fire({
+        icon: 'success',
+        title: 'Producto agregado',
+        showConfirmButton: false,
+        timer: 1000
+      })
     loadCartProducts()
 }
 
@@ -69,6 +76,7 @@ function removeCart(productReference){
     cartProducts = cartProducts.filter((product) => product.reference != productReference)
     
     localStorage.setItem('cart', JSON.stringify(cartProducts))
+    
     loadCartProducts()
 }
 function removeCartView(productReference){
@@ -255,3 +263,54 @@ function seleccionarObjetosAleatorios(array) {
     }
   }
   
+
+function loadProductInfo() {
+    const currency = localStorage.getItem('currency') ?? 'CLP';
+
+    // Obtener la URL actual
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // Obtener el valor del parámetro "reference"
+    var reference = urlParams.get('reference');
+    console.log(reference);
+    loadRandomProducts('all', 'maylike-products');
+
+    
+    var productFilter = products().filter((prod)=>prod.reference == reference);
+    if(productFilter != null){
+        var product = productFilter[0]
+        var htmlImages = ``;
+        for (let index = 0; index < product.images; index++) {
+            htmlImages += `<figure class="product-separated-item">
+                            <img src="assets/images/product/${reference}_${index+1}.jpg" data-zoom-image="assets/images/product/${reference}_${index+1}.jpg" alt="product image">
+                            </figure>
+                            `
+        }
+        console.log(product);
+
+        let htmlStars = `<div class="ratings">
+                            <div class="ratings-val" style="width: ${product.stars * 100 / 5}%;"></div><!-- End .ratings-val -->
+                        </div><!-- End .ratings -->`
+
+        let colors = ``;
+        product.colors.forEach((color)=> colors += `<a href="#color_${product.reference}_${color}" id="color_${product.reference}_${color}" style="background: #${color};"><span class="sr-only">Color name</span></a>`)
+
+        let category = categories().filter((cat)=>cat.name == product.category);
+        let htmlCat = `<span>Categoria:</span>
+        <a href="category.html?category=${category ? category[0].id : 0}">${product.category}</a>
+        <span>Marca:</span>
+        <a href="category.html?brand=${product.brand}">${product.brand}</a>`
+
+        $('.product-title').html(product.name)
+        $('.product-gallery').html(htmlImages)
+        $('#product-stars').html(htmlStars)
+        $('.new-price').html(`${currency} ${formatNumber(product[currency] ?? 0)}`)
+        $('.product-content').html(`<p>${product.short_description}</p>`)
+        $('#product_colors').html(colors)
+        $('.product-cat').html(htmlCat)
+        $('#product-description').html(product.description)
+        
+        
+    }
+
+}

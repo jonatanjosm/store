@@ -30,3 +30,7 @@
 .mouse-pointer{
     cursor: pointer;
 }
+
+.wrap{
+    white-space:break-spaces !important;
+}
