@@ -194,13 +194,13 @@ function validarTarjeta(cardNumber) {
   });  
   kushki.requestToken({
       amount: ${totalG},
-      currency: ${currency},
+      currency: '${currency}',
       card: {
-          name: ${$('#credit-card-name').val()},
-          number: ${$('#credit-card-number').val()},
-          cvc: ${$('#card-cvv').val()},
-          expiryMonth:  ${$('#card-date').val().split('/')[0]},
-          expiryYear: ${$('#card-date').val().split('/')[1]},
+          name: '${$('#credit-card-name').val()}',
+          number: '${$('#credit-card-number').val()}',
+          cvc: '${$('#card-cvv').val()}',
+          expiryMonth:  '${$('#card-date').val().split('/')[0]}',
+          expiryYear: '${$('#card-date').val().split('/')[1]}',
       },
       }, (response) => {
       if(response.code){
@@ -280,13 +280,13 @@ function validarTarjeta(cardNumber) {
       inTestEnvironment: true,
   });  
   kushki.requestSubscriptionToken({
-      currency: ${currency},
+      currency: '${currency}',
       card: {
-          name: ${$('#credit-card-name').val()},
-          number: ${$('#credit-card-number').val()},
-          cvc: ${$('#card-cvv').val()},
-          expiryMonth:  ${$('#card-date').val().split('/')[0]},
-          expiryYear: ${$('#card-date').val().split('/')[1]},
+          name: '${$('#credit-card-name').val()}',
+          number: '${$('#credit-card-number').val()}',
+          cvc: '${$('#card-cvv').val()}',
+          expiryMonth:  '${$('#card-date').val().split('/')[0]}',
+          expiryYear: '${$('#card-date').val().split('/')[1]}',
       },
       }, (response) => {
       if(response.code){
@@ -384,8 +384,8 @@ kushki.requestCashToken({
       identification: '${$('#cash-document').val()}',
       documentType: '${$('#cash-document-type').val()}',
       email: '${$('#cash-email').val()}',
-      totalAmount: totalG,
-      currency: 'currency',
+      totalAmount: ${totalG},
+      currency: '${currency}',
       description: 'Compra por ${currency} ${formatNumber(totalG)} en Kushki Store',
     },
     }, (response) => {
@@ -490,7 +490,7 @@ kushki.requestTransferToken({
     documentNumber: '${$('#transfer-document').val()}',
     paymentDesc: 'Compra por ${currency} ${formatNumber(totalG)} en Kushki Store',
     email: '${$('#transfer-email').val()}',
-    currency: 'currency',
+    currency: '${currency}',
     amount: {
       subtotalIva: ${(totalG * 0.81).toFixed(2)},
       subtotalIva0: 0,
