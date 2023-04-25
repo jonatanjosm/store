@@ -314,3 +314,12 @@ function loadProductInfo() {
     }
 
 }
+
+function addCartFromDetail(){
+    var urlParams = new URLSearchParams(window.location.search);
+
+    // Obtener el valor del parámetro "reference"
+    var reference = urlParams.get('reference');
+    console.log(reference);
+    addCart(reference)
+}
