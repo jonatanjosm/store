@@ -4,6 +4,9 @@
 $(document).ready(function () {
     'use strict';    
     loadRandomProducts('all', 'new-all-tab-products');
+    loadRandomProducts('Camaras Digitales', 'new-camera-tab-products');
+    loadRandomProducts('Tablets', 'new-tablets-tab-products');
+    loadRandomProducts('Audio', 'new-audio-tab-products');
     loadRandomProducts('Televisores', 'new-tv-tab-products');
     loadRandomProducts('Computador & Portatil', 'new-computers-tab-products');
     loadRandomProducts('Celulares', 'new-phones-tab-products');
