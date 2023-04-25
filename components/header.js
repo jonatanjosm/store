@@ -26,14 +26,14 @@ function header() {
         var html;
         switch (category.extra) {
             case 'hot':
-                html = `<li><a href="category.html?category=${category.id}"><span>${category.name}<span class="tip tip-hot">Hot</span></span></a></li>`
+                html = `<li><a href="categories.html"><span>${category.name}<span class="tip tip-hot">Hot</span></span></a></li>`
                 break;
             case 'new':
-                html = `<li><a href="category.html?category=${category.id}"><span>${category.name}<span class="tip tip-new">New</span></span></a></li>`
+                html = `<li><a href="categories.html"><span>${category.name}<span class="tip tip-new">New</span></span></a></li>`
                 break;
         
             default:
-                html = `<li><a href="category.html?category=${category.id}">${category.name}</a></li>`
+                html = `<li><a href="categories.html">${category.name}</a></li>`
                 break;
         }
         return html
@@ -44,14 +44,14 @@ function header() {
         var html;
         switch (brand.extra) {
             case 'hot':
-                html = `<li><a href="category.html?brand=${brand.name}"><span>${brand.name}<span class="tip tip-hot">Hot</span></span></a></li>`
+                html = `<li><a href="categories.html"><span>${brand.name}<span class="tip tip-hot">Hot</span></span></a></li>`
                 break;
             case 'new':
-                html = `<li><a href="category.html?brand=${brand.name}"><span>${brand.name}<span class="tip tip-new">New</span></span></a></li>`
+                html = `<li><a href="categories.html"><span>${brand.name}<span class="tip tip-new">New</span></span></a></li>`
                 break;
         
             default:
-                html = `<li><a href="category.html?brand=${brand.name}">${brand.name}</a></li>`
+                html = `<li><a href="categories.html">${brand.name}</a></li>`
                 break;
         }
         return html

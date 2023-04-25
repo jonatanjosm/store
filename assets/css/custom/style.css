@@ -34,3 +34,37 @@
 .wrap{
     white-space:break-spaces !important;
 }
+
+.card-img {
+    transition: opacity 0.2s ease;
+}
+.card-type-display .card-img + .card-img  {
+    margin-left: 0.25rem;
+}
+
+.card-img--unselected{
+    opacity: 0.2;
+}
+
+.form-group-card{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+    position: relative;
+}
+
+.card-type-display {
+    display: flex;
+    position: absolute;
+    top: 3.4rem;
+    right: 2rem;
+}
+
+.prism-code{
+    padding: 1rem;
+}
+
+.padding{
+    padding: 10px;
+}

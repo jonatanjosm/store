@@ -253,14 +253,14 @@ function seleccionarObjetosAleatorios(array) {
 
 
   function formatNumber(num) {
-    if (num >= 1000000) {
-      const millions = Math.floor(num / 1000000);
-      const thousands = Math.floor((num % 1000000) / 1000);
-      const rest = num % 1000;
-      return millions.toLocaleString() + "'" + thousands.toLocaleString('en-US', {minimumIntegerDigits: 3}) + "." + rest.toLocaleString('en-US', {minimumIntegerDigits: 3, useGrouping: false});
-    } else {
-      return num.toLocaleString();
+    const partes = num.toString().split('.');
+    let numFormateado = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    if (partes.length === 2) {
+        numFormateado += "," + partes[1].replace(/(\d{3})/g, "$1.");
     }
+
+    return numFormateado;
   }
   
 
@@ -286,7 +286,6 @@ function loadProductInfo() {
                             </figure>
                             `
         }
-        console.log(product);
 
         let htmlStars = `<div class="ratings">
                             <div class="ratings-val" style="width: ${product.stars * 100 / 5}%;"></div><!-- End .ratings-val -->
@@ -309,7 +308,8 @@ function loadProductInfo() {
         $('#product_colors').html(colors)
         $('.product-cat').html(htmlCat)
         $('#product-description').html(product.description)
-        
+        $('#product-aditional').html(product.aditional)
+        console.log(product.aditional);
         
     }
 
