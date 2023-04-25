@@ -9,3 +9,15 @@ function credentials() {
     const currency = localStorage.getItem('currency') ?? 'CLP';
     return currency ? credentials[currency] : '';
 }
+
+function documentType() {
+    var documentType = {
+        CLP: 'RUT',
+        COP: 'DNI',
+        PEN: 'CC',
+        MXN: 'CURP',
+        USD: 'CI'
+    }
+    const currency = localStorage.getItem('currency') ?? 'CLP';
+    return currency ? documentType[currency] : '';
+}

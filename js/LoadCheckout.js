@@ -152,6 +152,7 @@ function validarTarjeta(cardNumber) {
   }
 
   function oneTimePay() {
+    $("#credit-card-form").off("submit");
     $("#credit-card-form").submit(function(event) {
       event.preventDefault(); // Prevent default form submission
       if(validateCardInputs()){
@@ -240,6 +241,7 @@ function validarTarjeta(cardNumber) {
   }
 
   function suscribePay() {
+    $("#credit-card-form").off("submit");
     $("#credit-card-form").submit(function(event) {
       event.preventDefault(); // Prevent default form submission
       if( validateCardInputs() ){
@@ -364,7 +366,7 @@ function cashPay(event) {
       name: $('#cash-name').val(),
       lastName: $('#cash-lastname').val(),
       identification: $('#cash-document').val(),
-      documentType: $('#cash-document-type').val(),
+      documentType: documentType(),
       email: $('#cash-email').val(),
       totalAmount: totalG,
       currency: currency,
@@ -382,7 +384,7 @@ kushki.requestCashToken({
       name: '${$('#cash-name').val()}','
       lastName: '${$('#cash-lastname').val()},
       identification: '${$('#cash-document').val()}',
-      documentType: '${$('#cash-document-type').val()}',
+      documentType: '${documentType()}',
       email: '${$('#cash-email').val()}',
       totalAmount: ${totalG},
       currency: '${currency}',
@@ -449,7 +451,7 @@ function transferPay(event) {
       bankId: $('#transfer-bank').val(), 
       callbackUrl: 'http://www.testcallbackurl.com/', 
       userType: $('#transfer-userType').val(),
-      documentType: $('#transfer-document-type').val(),
+      documentType: documentType(),
       documentNumber: $('#transfer-document').val(),
       paymentDesc: `Compra por ${currency} ${formatNumber(totalG)} en Kushki Store`,
       email: $('#transfer-email').val(),
@@ -486,7 +488,7 @@ kushki.requestTransferToken({
     bankId: '${$('#transfer-bank').val()}',
     callbackUrl: 'http://www.testcallbackurl.com/', 
     userType: '${$('#transfer-userType').val()}',
-    documentType: '${$('#transfer-document-type').val()}',
+    documentType: '${documentType()}',
     documentNumber: '${$('#transfer-document').val()}',
     paymentDesc: 'Compra por ${currency} ${formatNumber(totalG)} en Kushki Store',
     email: '${$('#transfer-email').val()}',

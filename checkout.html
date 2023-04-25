@@ -208,15 +208,10 @@
                                                                 </div><!-- End .row -->
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
-                                                                        <label for="cash-document-type">Tipo de documento:</label>
-                                                                        <select id="cash-document-type" class="form-control" name="cash-document-type" required>
-                                                                        <option value="CC">Cédula de Ciudadania</option>
-                                                                        <option value="NIT">NIT</option>
-                                                                        <option value="CE">Cédula de Extranjeria</option>
-                                                                        <option value="TI">Tarjeta de Identidad</option>
-                                                                        <option value="PP">Pasaporte</option>
-                                                                        </select>
-
+                                                                        
+                                                                        <label>Email</label>
+                                                                        <input id="cash-email" type="email" class="form-control" required>
+                                                                        
                                                                     </div><!-- End .col-sm-6 -->
                         
                                                                     <div class="col-sm-6">
@@ -226,8 +221,6 @@
                                                                     </div><!-- End .col-sm-6 -->
                                                                 </div><!-- End .row -->
                                                                 
-                                                                <label>Email</label>
-                                                                <input id="cash-email" type="email" class="form-control" required>
                                                                 <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                                                     <span class="btn-text">Hacer Pago</span>
                                                                     <span class="btn-hover-text">Hacer Pago</span>
@@ -263,34 +256,24 @@
                                                                 </div><!-- End .row -->
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
-                                                                        <label for="transfer-document-type">Tipo de documento:</label>
-                                                                        <select id="transfer-document-type" class="form-control" name="transfer-document-type" required>
-                                                                        <option value="CC">Cédula de Ciudadania</option>
-                                                                        <option value="NIT">NIT</option>
-                                                                        <option value="CE">Cédula de Extranjeria</option>
-                                                                        <option value="TI">Tarjeta de Identidad</option>
-                                                                        <option value="PP">Pasaporte</option>
+                                                                        <label for="transfer-userType">Tipo de persona:</label>
+                                                                        <select id="transfer-userType" class="form-control" name="transfer-userType" required>
+                                                                        <option value="1">Natural</option>
+                                                                        <option value="2">Jurídica</option>
                                                                         </select>
-
                                                                     </div><!-- End .col-sm-6 -->
-                        
                                                                     <div class="col-sm-6">
                                                                         <label>Documento</label>
                                                                         <input id="transfer-document" type="text" class="form-control" required>
                                                                         
                                                                     </div><!-- End .col-sm-6 -->
                                                                 </div><!-- End .row -->
-                                                                <label for="transfer-userType">Tipo de persona:</label>
-                                                                <select id="transfer-userType" class="form-control" name="transfer-userType" required>
-                                                                <option value="1">Natural</option>
-                                                                <option value="2">Jurídica</option>
-                                                                </select>
                                                                 <label for="transfer-bank">Seleccione su banco:</label>
                                                                 <select id="transfer-bank" class="form-control" name="transfer-bank" required>
                                                                 
                                                                 </select>
                                                                 <label>Email</label>
-                                                                <input type="email" class="form-control" required>
+                                                                <input id="transfer-email" type="email" class="form-control" required>
                                                                 <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                                                     <span class="btn-text">Hacer Pago</span>
                                                                     <span class="btn-hover-text">Hacer Pago</span>
